@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>coin flip</title>
+  <style>  
+    .startButton{
+      background: linear-gradient(135deg, rgb(148, 226, 180), rgb(90, 211, 149));
+      width: 100px;
+      padding: 10px;
+      margin: 10px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      border-radius: 5px;
+      user-select: none;
+    }
+     .startButton:hover{
+      background: linear-gradient(135deg, rgb(128, 206, 160), rgb(70, 191, 129));
+     }
+  </style>
+</head>
+<body>
+  <div class="startButton" onclick="roundStart()">Start Round</div>
+  <input class="betInput" value="100" min="20" type="number" step="20">
+  <br>
+  <input type="radio" name="coin" class="radio-button" value="heads">Heads
+  <input type="radio" name="coin" class="radio-button" value="tails">Tails
+  <div class="startButton" onclick="makeBet()">Bet</div>
+<script>
+let balance = 500;
+let coinRate = 0;
+let userBet = ""
+let userBetValue = ""
+
+
+
+function makeBet(){
+  userBet = document.querySelector(".betInput").value;
+  return userBet;
+}
+
+function roundStart(){
+const r = Math.random()
+userBetValue = document.querySelector(`[name="coin"]:checked`).value;
+if(r > 0.5){
+    coinRate = 0;
+}
+else{
+    coinRate = 1;
+}
+roundResult();
+}
+
+function win(){
+balance += userBet;
+return balance;
+}
+
+function loss(){
+balance -= userBet;
+return balance;
+}
+
+function roundResult(){
+if(userBetValue == coinRate){
+  win();
+  alert(`win +${userBet}`);
+}
+else {
+  loss();
+  alert(`loss -${userBet}`);
+}}
+</script>
+</body>
+</html>
