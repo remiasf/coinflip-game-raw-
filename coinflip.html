@@ -19,11 +19,11 @@
   </style>
 </head>
 <body>
-  <div class="startButton" onclick="roundStart()">Start Round</div>
+  <div class="startButton" onclick="ifRoundStart()">Start Round</div>
   <input class="betInput" value="100" min="20" type="number" step="20">
   <br>
-  <input type="radio" name="coin" class="radio-button" value="heads">Heads
-  <input type="radio" name="coin" class="radio-button" value="tails">Tails
+  <input type="radio" name="coin" class="radio-button" value="0">Heads
+  <input type="radio" name="coin" class="radio-button" value="1">Tails
   <div class="startButton" onclick="makeBet()">Bet</div>
 <script>
 let balance = 500;
@@ -34,10 +34,18 @@ let userBetValue = ""
 
 
 function makeBet(){
-  userBet = document.querySelector(".betInput").value;
+  userBet = +document.querySelector(".betInput").value;
   return userBet;
 }
 
+function ifRoundStart(){
+  if(userBet <= balance){
+  roundStart();}
+
+  else {
+    alert(`not enough money: ${userBet-balance}`);
+}
+}
 function roundStart(){
 const r = Math.random()
 userBetValue = document.querySelector(`[name="coin"]:checked`).value;
