@@ -16,15 +16,27 @@
      .startButton:hover{
       background: linear-gradient(135deg, rgb(128, 206, 160), rgb(70, 191, 129));
      }
+     .container{
+      background: linear-gradient(135deg, rgb(167, 236, 196), rgb(123, 225, 172));
+      width: 200px;
+      padding: 40px;
+      margin: 10px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      border-radius: 5px;
+      user-select: none;
+     }
   </style>
 </head>
 <body>
+  <div class="container">
   <div class="startButton" onclick="ifRoundStart()">Start Round</div>
   <input class="betInput" value="100" min="20" type="number" step="20">
   <br>
   <input type="radio" name="coin" class="radio-button" value="0">Heads
   <input type="radio" name="coin" class="radio-button" value="1">Tails
   <div class="startButton" onclick="makeBet()">Bet</div>
+  <input type="string" value="balance">
+  </div>
 <script>
 let balance = 500;
 let coinRate = 0;
